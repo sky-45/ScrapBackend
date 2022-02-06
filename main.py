@@ -51,7 +51,7 @@ def postData2(item: Item3):
     profile = Profile(item.data)
     #print(profile.getDataProfiles())
     data = profile.getDataProfiles()
-    data["id"] = dbHandler.getCurrentIndex()
+    data["id"] = dbHandler.getCurrentIndex() + 1
     #send data to cosmosDB
     dbHandler.insertData(data)
 
