@@ -12,7 +12,7 @@ client = CosmosClient(endpoint, key)
 
 DATABASE_NAME = 'ScrapLinkedInData'
 database = client.get_database_client(DATABASE_NAME)
-CONTAINER_NAME = 'Profiles'
+CONTAINER_NAME = 'Perfiles'
 container = database.get_container_client(CONTAINER_NAME)
 
 def getCurrentIndex():
@@ -30,5 +30,4 @@ def getProfiles():
         enable_cross_partition_query=True)
     return list(items)
 
-print(getProfiles())
 

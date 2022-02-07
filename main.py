@@ -1,3 +1,4 @@
+from ast import Str
 import profile
 from typing import Optional, List
 from fastapi import FastAPI
@@ -19,7 +20,7 @@ class Item2(BaseModel):
     data: List[dict] = []
 
 class Item3(BaseModel):
-    data: dict
+    data: List[dict] = []
 
 
 
@@ -47,13 +48,17 @@ def read_root():
 
 @app.post("/data3/")
 def postData2(item: Item3):
-    print("data raw: ", item.data)
-    profile = Profile(item.data)
+    #print("data raw: ", item.data)
+    profile = Profile(item.data[0])
     #print(profile.getDataProfiles())
     data = profile.getDataProfiles()
-    data["id"] = dbHandler.getCurrentIndex() + 1
+    new_idx = dbHandler.getCurrentIndex() + 1
+    #print(new_idx,type(new_idx))
+    #data["id"] = Str(dbHandler.getCurrentIndex() + 1)
+
     #send data to cosmosDB
     dbHandler.insertData(data)
+    print("data insertada")
 
 
     return {"status":"sucessfull"}

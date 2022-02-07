@@ -78,4 +78,4 @@ class Profile:
                 }
 
     def getDataProfiles(self):
-        return {'name':self.name, 'title':self.title, 'photoURL':self.photoURL, 'contactCard':self.contactCard, 'experiences':self.experiences, 'education':self.education}
+        return {'name':self.name, 'title':self.title, 'photoURL':self.photoURL, 'contactCard':self.contactCard, 'experiences':self.experiences, 'education':self.education, 'currentWork':self.currentWork, 'lastUpdated':self.lastUpdated}
